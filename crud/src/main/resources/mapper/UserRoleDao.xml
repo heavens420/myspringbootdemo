@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlx.crud.dao.UserRoleDao">
+    <resultMap id="UserROle" type="com.zlx.crud.entity.UserRole">
+        <id property="id" column="id" jdbcType="INTEGER"></id>
+        <result property="userId" column="USER_ID" jdbcType="INTEGER"></result>
+        <result property="roleId" column="ROLE_ID" jdbcType="INTEGER"></result>
+    </resultMap>
+
+<!--    新增中间表-->
+    <insert id="insertUserRole" >
+        insert into USER_ROLE (USER_ID,ROLE_ID) VALUES (#{user.id},#{role.id})
+    </insert>
+
+<!--    修改中间表-->
+    <update id="updateUserRole">
+        UPDATE `USER_ROLE` SET ROLE_ID=(SELECT ID FROM ROLE WHERE `NAME`=#{name}) WHERE ID=#{id};
+    </update>
+
+<!--    按照用户id删除中间表 即删除用户的同时也要删除中间表-->
+    <delete id="deleteUserRole">
+        delete FROM USER_ROLE WHERE USER_ID = #{userId}
+    </delete>
+
+<!--    批量删除中间表 配合批量删除用户时 也要批量删除中间表-->
+    <delete id="batchDeleteUserRole" parameterType="java.util.List">
+        delete from USER_ROLE WHERE USER_ID IN
+        <foreach collection="list" item="item" open="(" separator = "," close=")">
+            #{item}
+        </foreach>
+    </delete>
+</mapper>

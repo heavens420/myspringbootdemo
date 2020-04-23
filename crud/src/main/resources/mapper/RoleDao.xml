@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlx.crud.dao.RoleDao">
+
+    <resultMap type="com.zlx.crud.entity.Role" id="RoleMap">
+        <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="RoleMap">
+        select
+          ID, NAME
+        from zlx.ROLE
+        where ID = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="RoleMap">
+        select
+          ID, NAME
+        from zlx.ROLE
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="RoleMap">
+        select
+          ID, NAME
+        from zlx.ROLE
+        <where>
+            <if test="id != null">
+                and ID = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and NAME = #{name}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into zlx.ROLE(NAME)
+        values (#{name})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update zlx.ROLE
+        <set>
+            <if test="name != null and name != ''">
+                NAME = #{name},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from zlx.ROLE where ID = #{id}
+    </delete>
+
+</mapper>

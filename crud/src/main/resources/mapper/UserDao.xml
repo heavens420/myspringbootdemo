@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlx.crud.dao.UserDao">
+
+    <resultMap type="com.zlx.crud.entity.User" id="UserMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="addr" column="addr" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP" />
+
+    </resultMap>
+
+<!--    批量删除-->
+    <delete id="deleteList" parameterType="java.util.List">
+        delete from USER WHERE ID IN 
+        <foreach collection="list" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <!--时间格式化  date_format()无效 -->
+    <select id="getTime" resultMap="UserMap">
+        select id,age,name,phone,addr,/*DATE_FORMAT(time,'%Y-%m-%d %T') */time from   USER
+    </select>
+
+    <!--查询指定时间区间内的 数据-->
+    <select id="queryByTime" resultMap="UserMap" >
+        select id,age,name,phone,addr,time from USER where time between #{startTime} and #{endTime}
+    </select>
+
+<!--    统计查询 resultMap中无对应字段 故查询不成功，可在实体类中添加属性用于 统计查询-->
+<!--    统计年龄相同的人数-->
+    <select id="countAge" resultType="long"  parameterType="int">
+        SELECT count(age) as countAge FROM USER GROUP BY age HAVING age = #{age}
+    </select>
+
+<!--    统计数据库的总记录数-->
+    <select id="countTotal" resultType="long" >
+        select count(1) as count from USER ;
+    </select>
+
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="UserMap">
+        select
+          id, age, name, phone, addr
+        from zlx.USER
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="UserMap">
+        select
+          id, age, name, phone, addr
+        from zlx.USER
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="UserMap">
+        select
+          id, age, name, phone, addr
+        from zlx.USER
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="phone != null and phone != ''">
+                and phone = #{phone}
+            </if>
+            <if test="addr != null and addr != ''">
+                and addr = #{addr}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into zlx.USER(age, name, phone, addr)
+        values (#{age}, #{name}, #{phone}, #{addr})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update zlx.USER
+        <set>
+            <if test="age != null">
+                age = #{age},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="phone != null and phone != ''">
+                phone = #{phone},
+            </if>
+            <if test="addr != null and addr != ''">
+                addr = #{addr},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from zlx.USER where id = #{id}
+    </delete>
+
+</mapper>
