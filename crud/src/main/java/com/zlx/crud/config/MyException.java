@@ -18,12 +18,14 @@ public class MyException {
         return map;
     }
 
-//    @ResponseBody
-//    @ExceptionHandler(value = Exception.class)
-//    public Map<String,Object> Exception(Exception e){
-//        Map map = new HashMap();
-//        map.put("code","999");
-//        map.put("message","系统繁忙");
-//        return map;
-//    }
+    @ResponseBody
+    @ExceptionHandler(value = Exception.class)
+    public Map<String,Object> Exception(Exception e){
+        Map map = new HashMap();
+        map.put("code","999");
+        map.put("message","系统繁忙");
+        return map;
+    }
+
+
 }

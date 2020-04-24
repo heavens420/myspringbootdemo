@@ -1,0 +1,8 @@
+server:
+  port: 8006
+spring:
+  security:
+    user:
+      name: hh
+      password: hh
+      roles: guest
