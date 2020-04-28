@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class First {
 
-    @RequestMapping("1")
+    @RequestMapping("/admin/1")
     public String One(){
         return "hello security";
+    }
+
+    @RequestMapping("/user/2")
+    public String Two(){
+        return "This is User ";
     }
 }

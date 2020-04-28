@@ -7,13 +7,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="security" />
-        <module name="myspringbootdemo" />
         <module name="crud" />
+        <module name="security" />
+        <module name="datajpa" />
+        <module name="myspringbootdemo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="crud" target="1.8" />
+      <module name="datajpa" target="1.8" />
       <module name="myspringbootdemo" target="1.8" />
       <module name="security" target="1.8" />
     </bytecodeTargetLevel>
@@ -21,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="crud" options="-parameters" />
+      <module name="datajpa" options="-parameters" />
       <module name="myspringbootdemo" options="-parameters" />
       <module name="security" options="-parameters" />
     </option>

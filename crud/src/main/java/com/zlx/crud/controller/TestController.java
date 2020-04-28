@@ -2,6 +2,7 @@ package com.zlx.crud.controller;
 
 //test
 import com.zlx.crud.entity.User;
+import lombok.var;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class TestController {
         List list = new ArrayList();
         User user1 = new User(12, 22, "mao");
         User user2 = new User(13, 24, "xi");
+
         list.add(user1);
         list.add(user2);
         System.out.println(user);
