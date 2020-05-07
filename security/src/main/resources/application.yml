@@ -1,8 +1,27 @@
 server:
   port: 8006
+  #配置session过期时间 默认至少一分钟（配置小于一分钟 默认一分钟）
+  servlet:
+    session:
+      timeout: 600s
+      cookie:
+        #浏览器脚本无法访问cookie
+        http-only: true
+        #设置只有https 可以携带cookie
+        secure: false
+
+#自定义用户密码 也可在配置类中定义
 spring:
   security:
     user:
       name: hh
       password: hh
       roles: guest
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://jing.tk:3311/security?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+

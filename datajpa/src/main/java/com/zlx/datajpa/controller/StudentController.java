@@ -1,5 +1,6 @@
 package com.zlx.datajpa.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.zlx.datajpa.entity.Student;
 import com.zlx.datajpa.service.StudentService;
 import lombok.val;
@@ -26,15 +27,17 @@ public class StudentController {
     }
 
     @RequestMapping("/2")
-    public Map<String,Object> SearchById(int studentId,int gradeId){
-        val list = service.find(studentId, gradeId);
+    //查询只显示详情视图
+//    @JsonView(Student.UserDetailView.class)
+    public Map<String,Object> SearchById(int studentId){
+        Student student = service.find(studentId);
         Map<String,Object> map = new HashMap<>();
-        map.put("student",list);
+        map.put("student",student);
         return map;
     }
 
     @RequestMapping("/3")
-    public Map<String,Object> SearchById(int studentId){
+    public Map<String,Object> DeleteById(int studentId){
        service.DeleteStudent(studentId);
         Map<String,Object> map = new HashMap<>();
         map.put("student","删除成功");

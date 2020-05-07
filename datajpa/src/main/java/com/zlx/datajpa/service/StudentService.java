@@ -21,13 +21,8 @@ public class StudentService {
         return repository.save(student);
     }
 
-    public List<Student> find(int id,int gradeId){
-        Student stu = repository.findById(id).get();
-        Student grade = repository.findById(gradeId).get();
-        List<Student> list = new ArrayList<>();
-        list.add(stu);
-        list.add(grade);
-        return list;
+    public Student find(int id){
+        return repository.findById(id).get();
     }
 
     public void DeleteStudent(int id){
