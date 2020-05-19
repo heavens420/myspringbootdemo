@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Configuration
 public class ShiroConfig {
-    //开启权限注解支持
+    //以下三个方法为开启权限注解支持
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(DefaultWebSecurityManager securityManager){
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
