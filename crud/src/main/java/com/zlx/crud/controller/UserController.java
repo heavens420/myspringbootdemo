@@ -53,8 +53,7 @@ public class UserController {
         return 0;
     }
 
-//    @ResponseBody
-    @GetMapping(value = "queryAll",produces = {"application/json;charset=utf-8"})
+    @GetMapping(value = "queryAll")
     public List<User> queryAll(Model model){
         List<User> list = this.userService.queryAll();
         list.stream().forEach(user -> System.out.println(user.toString()));

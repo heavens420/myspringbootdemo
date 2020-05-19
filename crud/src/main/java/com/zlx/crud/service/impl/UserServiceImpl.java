@@ -42,6 +42,16 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 根据用户名或phone查询用户
+     * @param userId
+     * @return
+     */
+    @Override
+    public User queryUserbyNameOrPhone(String userId) {
+        return userDao.queryUserbyNameOrPhone(userId);
+    }
+
+    /**
      * 查询多条数据
      *
      * @param offset 查询起始位置

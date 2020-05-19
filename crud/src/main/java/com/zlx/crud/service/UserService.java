@@ -23,6 +23,13 @@ public interface UserService {
     User queryById(Integer id);
 
     /**
+     * 根据用户名或phone查询用户
+     * @param userId
+     * @return
+     */
+    User queryUserbyNameOrPhone(String userId);
+
+    /**
      * 查询多条数据
      *
      * @param offset 查询起始位置

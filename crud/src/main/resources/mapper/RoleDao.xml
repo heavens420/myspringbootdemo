@@ -7,10 +7,9 @@
         <result property="name" column="NAME" jdbcType="VARCHAR"/>
     </resultMap>
 
-    <!--查询单个-->
     <select id="queryById" resultMap="RoleMap">
         select
-          ID, NAME
+           NAME
         from zlx.ROLE
         where ID = #{id}
     </select>
@@ -26,7 +25,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="RoleMap">
         select
-          ID, NAME
+        ID, NAME
         from zlx.ROLE
         <where>
             <if test="id != null">
@@ -36,6 +35,14 @@
                 and NAME = #{name}
             </if>
         </where>
+    </select>
+
+<!--    根据当前登录的userId查询其拥有的角色-->
+    <select id="queryRoleByUserId" resultType="java.lang.String">
+        SELECT r.NAME FROM role r
+        LEFT JOIN user_role ur ON r.ID=ur.ROLE_ID
+        LEFT JOIN user u ON ur.USER_ID=u.id
+        WHERE u.id = #{userId};
     </select>
 
     <!--新增所有列-->

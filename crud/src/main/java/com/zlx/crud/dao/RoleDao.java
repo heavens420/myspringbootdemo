@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * (Role)表数据库访问层
@@ -22,6 +23,8 @@ public interface RoleDao {
      * @return 实例对象
      */
     Role queryById(Integer id);
+
+    Set<String> queryRoleByUserId(Integer userId);
 
     /**
      * 查询指定行数据

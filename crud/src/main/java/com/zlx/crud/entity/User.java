@@ -23,7 +23,17 @@ public class User implements Serializable {
     
     private String addr;
 
-//    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") //将前台传来的日期格式化
+    private String passwd;
+
+    public String getPasswd() {
+        return passwd;
+    }
+
+    public void setPasswd(String passwd) {
+        this.passwd = passwd;
+    }
+
+    //    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") //将前台传来的日期格式化
 //    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8") //将后台传给前台的日期格式化
     private Date time;
 

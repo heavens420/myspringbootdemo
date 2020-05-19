@@ -4,6 +4,7 @@ package com.zlx.crud.service;
 import com.zlx.crud.entity.Role;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * (Role)表服务接口
@@ -54,4 +55,5 @@ public interface RoleService {
      */
     boolean deleteById(Integer id);
 
+    Set<String> queryRoleByUserId(Integer id);
 }

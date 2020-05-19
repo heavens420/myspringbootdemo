@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlx.crud.dao.PermissionDao">
+    <resultMap id="permissionMap" type="com.zlx.crud.entity.Permission">
+        <result property="id" column="ID" jdbcType="INTEGER"></result>
+        <result property="permissionCode" column="PER_CODE" jdbcType="VARCHAR"></result>
+        <result property="permissionName" column="PER_NAME" jdbcType="VARCHAR"></result>
+    </resultMap>
+
+<!--    根据当前登录用户的id查询其角色拥有的权限  由于要将集合的Permission类型转换为String类型 故 resultMap不能为permissionMap 否则类型转换异常
+        所以使用resultType指定返回类型为String-->
+    <select id="queryPermissioinByUserId"  resultType="java.lang.String">
+        SELECT p.PER_CODE FROM permission p
+        LEFT JOIN role_permission rp
+        ON rp.PER_ID = p.ID
+        LEFT JOIN role r
+        ON r.ID = rp.ROLE_ID
+        LEFT JOIN user_role ur
+        ON r.ID=ur.ROLE_ID
+        LEFT JOIN user  u
+        ON u.id=ur.USER_ID
+        WHERE u.id=#{userId};
+    </select>
+</mapper>

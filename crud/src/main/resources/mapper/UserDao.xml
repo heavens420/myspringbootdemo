@@ -8,6 +8,7 @@
         <result property="name" column="name" jdbcType="VARCHAR"/>
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
         <result property="addr" column="addr" jdbcType="VARCHAR"/>
+        <result property="passwd" column="password" jdbcType="VARCHAR"/>
         <result property="time" column="time" jdbcType="TIMESTAMP" />
 
     </resultMap>
@@ -80,6 +81,11 @@
                 and addr = #{addr}
             </if>
         </where>
+    </select>
+
+<!--    根据用户名或电话查询用户-->
+    <select id="queryUserbyNameOrPhone" resultType="com.zlx.crud.entity.User" resultMap="UserMap">
+        select * from USER u where u.name = #{userId} or u.phone = #{userId}
     </select>
 
     <!--新增所有列-->

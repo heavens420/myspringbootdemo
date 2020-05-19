@@ -185,7 +185,7 @@ public class passconfig extends WebSecurityConfigurerAdapter {
 //                .changeSessionId()
                 //每次登录创建新的session
 //                .newSession()
-                //不会创建session 一直使用旧的session
+                //不会创建sessio一直使用旧的session
 //                .none();
                 .invalidSessionStrategy(sessionStrategy)
                 //最大session数量 即最多同时登录数量

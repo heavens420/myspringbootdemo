@@ -25,6 +25,12 @@ public interface UserDao {
     User queryById(Integer id);
 
     /**
+     * 根据用户名或电话号码查询用户
+     *
+     */
+    User queryUserbyNameOrPhone(String userId);
+
+    /**
      * 查询指定行数据
      *
      * @param offset 查询起始位置

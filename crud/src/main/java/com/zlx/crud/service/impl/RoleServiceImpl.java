@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Set;
 
 /**
  * (Role)表服务实现类
@@ -79,5 +80,10 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public boolean deleteById(Integer id) {
         return this.roleDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public Set<String> queryRoleByUserId(Integer id) {
+        return roleDao.queryRoleByUserId(id);
     }
 }
