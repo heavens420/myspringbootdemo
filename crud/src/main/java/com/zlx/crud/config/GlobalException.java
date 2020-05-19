@@ -1,5 +1,6 @@
 package com.zlx.crud.config;
 
+import org.apache.shiro.authz.AuthorizationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,7 +23,16 @@ public class GlobalException {
 //        return map;
 //    }
 
-//    @ResponseBody
+    @ResponseBody
+    @ExceptionHandler(value = AuthorizationException.class)
+    public Map<String,Object> AuthorizationException(Exception e){
+        Map<String,Object> map = new HashMap<>();
+        map.put("错误信息：","权限不足");
+        map.put("提示信息：",e.getMessage());
+        return map;
+    }
+
+    @ResponseBody
     @ExceptionHandler(value = Exception.class)
     public ModelAndView Exception(HttpServletRequest request, Exception e){
         ModelAndView modelAndView = new ModelAndView();

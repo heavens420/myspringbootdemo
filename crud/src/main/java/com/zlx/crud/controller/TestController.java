@@ -61,7 +61,7 @@ public class TestController {
 //    @RequiresRoles("唐僧")
     @GetMapping("/7")
     public String test2(){
-        return "this is 5 ";
+        return "this is 7 ";
     }
 
     @RequestMapping("/6")
