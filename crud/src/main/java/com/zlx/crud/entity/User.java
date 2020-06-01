@@ -3,6 +3,7 @@ package com.zlx.crud.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * (User)实体类
@@ -25,9 +26,54 @@ public class User implements Serializable {
 
     private String passwd;
 
+    private Integer lifeId;
+
+    private List<Role> roles;
+
+//    private String quality;
+
+    private Life life;
+
+    public Life getLife() {
+        return life;
+    }
+
+    public void setLife(Life life) {
+        this.life = life;
+    }
+
     public String getPasswd() {
         return passwd;
     }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Integer getLifeId() {
+        return lifeId;
+    }
+
+//    public String getQuality() {
+//        return quality;
+//    }
+//
+//    public void setQuality(String quality) {
+//        this.quality = quality;
+//    }
+
+    public void setLifeId(Integer lifeId) {
+        this.lifeId = lifeId;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
 
     public void setPasswd(String passwd) {
         this.passwd = passwd;

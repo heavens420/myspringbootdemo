@@ -4,6 +4,8 @@ server:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.example.demo.entity
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 spring:
   datasource:
     username: root
@@ -16,3 +18,9 @@ spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+
+#控制台打印sql语句
+logging:
+  level:
+    #dao层包名
+    com.zlx.crud.dao: debug

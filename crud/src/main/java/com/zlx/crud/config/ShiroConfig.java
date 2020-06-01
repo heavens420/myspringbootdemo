@@ -49,7 +49,7 @@ public class ShiroConfig {
         map.put("/login", "anon");
 //        map.put("/5","perms[query]");
 //        map.put("/5", "roles[唐僧]");
-        map.put("/**","authc");
+//        map.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         return shiroFilterFactoryBean;
     }

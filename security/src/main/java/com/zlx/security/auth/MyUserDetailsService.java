@@ -30,7 +30,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
 
         //角色格式为 ROLE_xxx 处理如下
-        roles = roles.stream().map(r -> "ROLE" + r).collect(Collectors.toList());
+        roles = roles.stream().map(r -> "ROLE_" + r).collect(Collectors.toList());
 
         //给角色添加权限
         authority.addAll(roles);

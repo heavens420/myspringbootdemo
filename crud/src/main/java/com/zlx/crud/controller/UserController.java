@@ -1,7 +1,10 @@
 package com.zlx.crud.controller;
 
+import com.zlx.crud.entity.Life;
 import com.zlx.crud.entity.User;
+import com.zlx.crud.service.PermissionService;
 import com.zlx.crud.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +30,9 @@ public class UserController {
      */
     @Resource
     private UserService userService;
+
+    @Autowired
+    private PermissionService permissionService;
 
     /**
      * 通过主键查询单条数据
@@ -108,8 +114,7 @@ public class UserController {
     }
 
     @RequestMapping("date")
-    public List<User> queryByTime( Date startTime,
-                                   Date endTime){
+    public List<User> queryByTime( Date startTime,Date endTime){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //        startTime = new Date();
         endTime = new Date();
@@ -118,4 +123,29 @@ public class UserController {
     }
 
 
+    @RequestMapping("/permission")
+    public Set<String> getUserPermission(Integer userId){
+        return permissionService.queryPermissioinByUserId(userId);
+    }
+
+    @RequestMapping("/1")
+    public List<User> getUserAndQuality(){
+        return userService.getUserAndQuality();
+    }
+
+    @RequestMapping("2")
+    public List<User> getUserAndLife(){
+        return userService.getUserAndLife();
+    }
+
+    //此接口报错原因：将life中的属性变为user中的属性时 由于没有对life id传值故会查询出所有life数据 不再是一对一关系
+    @RequestMapping("3")
+    public List<User> getUserAndLife2(){
+        return userService.getUserAndLife2();
+    }
+
+    @RequestMapping("4")
+    public List<User> getUserAndRoles(){
+        return userService.getUserAndRoles();
+    }
 }

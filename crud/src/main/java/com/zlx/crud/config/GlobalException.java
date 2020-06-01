@@ -14,14 +14,14 @@ import java.util.Map;
 @ControllerAdvice //用于自定义异常
 //@RestControllerAdvice
 public class GlobalException {
-//    @ResponseBody  //返回json字符串
-//    @ExceptionHandler(value = NullPointerException.class) //捕捉异常类型
-//    public Map<String,Object> NullException(Exception e){
-//        Map<String,Object> map = new HashMap<>();
-//        map.put("code",500);
-//        map.put("msg","空指针");
-//        return map;
-//    }
+    @ResponseBody  //返回json字符串
+    @ExceptionHandler(value = NullPointerException.class) //捕捉异常类型
+    public Map<String,Object> NullException(Exception e){
+        Map<String,Object> map = new HashMap<>();
+        map.put("错误信息：","空指针");
+        map.put("提示信息：",e.getMessage());
+        return map;
+    }
 
     @ResponseBody
     @ExceptionHandler(value = AuthorizationException.class)

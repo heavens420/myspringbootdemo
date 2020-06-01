@@ -1,6 +1,7 @@
 package com.zlx.crud.service;
 
 
+import com.zlx.crud.entity.Life;
 import com.zlx.crud.entity.User;
 
 import java.util.Date;
@@ -89,4 +90,34 @@ public interface UserService {
     List<User> getTime();
 
     List<User> queryByTime(Date startTime, Date endTime);
+
+    /**
+     * 查询life所有
+     * @return
+     */
+    List<Life> getLife();
+
+    /**
+     * 查询用户关联life 的quality字段
+     * @return
+     */
+    List<User> getUserAndQuality();
+
+    /**
+     * 查询用户关联Life
+     * @return
+     */
+    List<User> getUserAndLife();
+
+    /**
+     * 查询用户关联Life 将life属性 变为user属性
+     * @return
+     */
+    List<User> getUserAndLife2();
+
+    /**
+     * 查询用户关联角色 一对多
+     * @return
+     */
+    List<User> getUserAndRoles();
 }

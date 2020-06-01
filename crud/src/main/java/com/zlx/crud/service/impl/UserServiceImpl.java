@@ -3,6 +3,7 @@ package com.zlx.crud.service.impl;
 
 import com.zlx.crud.dao.UserDao;
 import com.zlx.crud.dao.UserRoleDao;
+import com.zlx.crud.entity.Life;
 import com.zlx.crud.entity.User;
 import com.zlx.crud.service.UserService;
 import org.springframework.stereotype.Service;
@@ -148,5 +149,46 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> queryByTime(Date startTime,Date endTime) {
         return userDao.queryByTime(startTime,endTime);
+    }
+
+    @Override
+    public List<Life> getLife(){
+        return userDao.getLife();
+    }
+
+    /**
+     * 查询用户关联life 的quality字段
+     * @return
+     */
+    @Override
+    public List<User> getUserAndQuality(){
+        return userDao.getUserAndQuality();
+    }
+
+    /**
+     * 查询用户关联Life
+     * @return
+     */
+    @Override
+    public List<User> getUserAndLife(){
+        return userDao.getUserAndLife();
+    }
+
+    /**
+     * 查询用户关联Life 将life属性 变为user属性
+     * @return
+     */
+    @Override
+    public List<User> getUserAndLife2(){
+        return userDao.getUserAndLife2();
+    }
+
+    /**
+     * 查询用户关联角色 一对多
+     * @return
+     */
+    @Override
+    public List<User> getUserAndRoles(){
+        return userDao.getUserAndRoles();
     }
 }
