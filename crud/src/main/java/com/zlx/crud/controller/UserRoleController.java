@@ -31,4 +31,9 @@ public class UserRoleController {
         userRoleService.updateUserRole("唐僧",1);
         return 0;
     }
+
+    @RequestMapping("/up")
+    public int updateUserRole2(Integer userId,Integer id){
+        return userRoleService.updateUserAndRole(userId,id);
+    }
 }

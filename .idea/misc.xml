@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/security/pom.xml" />
         <option value="$PROJECT_DIR$/datajpa/pom.xml" />
+        <option value="$PROJECT_DIR$/jjwt/pom.xml" />
       </list>
     </option>
   </component>

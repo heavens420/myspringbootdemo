@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/crud/crud.iml" filepath="$PROJECT_DIR$/crud/crud.iml" />
       <module fileurl="file://$PROJECT_DIR$/datajpa/datajpa.iml" filepath="$PROJECT_DIR$/datajpa/datajpa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jjwt/jjwt.iml" filepath="$PROJECT_DIR$/jjwt/jjwt.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/myspringbootdemo.iml" filepath="$PROJECT_DIR$/.idea/myspringbootdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/security/security.iml" filepath="$PROJECT_DIR$/security/security.iml" />
     </modules>

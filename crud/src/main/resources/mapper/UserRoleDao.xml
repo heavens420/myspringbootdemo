@@ -7,25 +7,33 @@
         <result property="roleId" column="ROLE_ID" jdbcType="INTEGER"></result>
     </resultMap>
 
-<!--    新增中间表-->
-    <insert id="insertUserRole" >
+    <!--    新增中间表-->
+    <insert id="insertUserRole">
         insert into USER_ROLE (USER_ID,ROLE_ID) VALUES (#{user.id},#{role.id})
     </insert>
 
-<!--    修改中间表-->
+    <!--    修改中间表-->
     <update id="updateUserRole">
         UPDATE `USER_ROLE` SET ROLE_ID=(SELECT ID FROM ROLE WHERE `NAME`=#{name}) WHERE ID=#{id};
     </update>
 
-<!--    按照用户id删除中间表 即删除用户的同时也要删除中间表-->
+    <!--根据用户id 修改用户角色 即修改中间表-->
+    <update id="updateUserAndRole">
+        UPDATE user_role
+            SET ROLE_ID = #{roleId}
+        where
+            ID = #{id}
+    </update>
+
+    <!--    按照用户id删除中间表 即删除用户的同时也要删除中间表-->
     <delete id="deleteUserRole">
         delete FROM USER_ROLE WHERE USER_ID = #{userId}
     </delete>
 
-<!--    批量删除中间表 配合批量删除用户时 也要批量删除中间表-->
+    <!--    批量删除中间表 配合批量删除用户时 也要批量删除中间表-->
     <delete id="batchDeleteUserRole" parameterType="java.util.List">
         delete from USER_ROLE WHERE USER_ID IN
-        <foreach collection="list" item="item" open="(" separator = "," close=")">
+        <foreach collection="list" item="item" open="(" separator="," close=")">
             #{item}
         </foreach>
     </delete>

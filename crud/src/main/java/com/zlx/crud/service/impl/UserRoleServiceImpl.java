@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Service
@@ -37,6 +39,14 @@ public class UserRoleServiceImpl implements UserRoleService {
     public UserRole updateUserRole(String name, int id) {
         userRoleDao.updateUserRole(name,id);
         return null;
+    }
+
+    @Override
+    public int updateUserAndRole(Integer userId,Integer id) {
+        Map<Object,Integer> map = new HashMap<>();
+        map.put("userId",userId);
+        map.put("id",id);
+        return userRoleDao.updateUserAndRole(map);
     }
 
     @Override
