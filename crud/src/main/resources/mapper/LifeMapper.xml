@@ -7,5 +7,20 @@
        <result property="used" column="used" jdbcType="DOUBLE" />
        <result property="quality" column="quality" jdbcType="VARCHAR" />
        <result property="value" column="value" jdbcType="INTEGER" />
+       <result property="modifiedTime" column="modified_time" jdbcType="TIMESTAMP" />
    </resultMap>
+
+    <!--格式化日期类测试-->
+    <select id="getLife" resultMap="map" parameterType="Integer">
+        select
+            id,rest,used,rest,quality,value,DATE_FORMAT(modified_time, '%Y-%m-%d %T' ) as modified_time
+        from
+            life
+        <where>
+            <if test="id != null and id != ''">
+                and id = #{id}
+            </if>
+        </where>
+
+    </select>
 </mapper>

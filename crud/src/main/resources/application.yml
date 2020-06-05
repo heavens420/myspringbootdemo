@@ -14,7 +14,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
-  #格式化日期类型
+  #格式化日期类型(垃圾）
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
