@@ -2,6 +2,12 @@
 
 spring:
   datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://jing.tk:3312/zlx?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
     druid:
       #最小连接池数量min-idle=3
       min-idle: 3
@@ -27,3 +33,9 @@ spring:
 server:
   port: 8104
 
+jwt:
+  key: uuuuuuuuuu
+
+logging:
+  level:
+    com.zlx.jjwt.dao: debug
