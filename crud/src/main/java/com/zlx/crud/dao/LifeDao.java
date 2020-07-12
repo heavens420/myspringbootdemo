@@ -1,8 +1,7 @@
 package com.zlx.crud.dao;
 
-import com.zlx.crud.entity.Life;
+import com.zlx.crud.entity.mysql.Life;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

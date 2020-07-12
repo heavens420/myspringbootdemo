@@ -2,12 +2,11 @@ package com.zlx.crud.service;
 
 
 
-import com.zlx.crud.entity.Role;
-import com.zlx.crud.entity.User;
-import com.zlx.crud.entity.UserRole;
+import com.zlx.crud.entity.mysql.Role;
+import com.zlx.crud.entity.mysql.User;
+import com.zlx.crud.entity.mysql.UserRole;
 
 import java.util.List;
-import java.util.Map;
 
 public interface UserRoleService {
 

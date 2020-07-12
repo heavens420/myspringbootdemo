@@ -1,4 +1,4 @@
-package com.zlx.crud.entity;
+package com.zlx.crud.entity.mysql;
 
 import lombok.Data;
 

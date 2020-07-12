@@ -3,9 +3,9 @@ package com.zlx.crud.service.impl;
 
 import com.zlx.crud.dao.UserDao;
 import com.zlx.crud.dao.UserRoleDao;
-import com.zlx.crud.entity.Role;
-import com.zlx.crud.entity.User;
-import com.zlx.crud.entity.UserRole;
+import com.zlx.crud.entity.mysql.Role;
+import com.zlx.crud.entity.mysql.User;
+import com.zlx.crud.entity.mysql.UserRole;
 import com.zlx.crud.service.UserRoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

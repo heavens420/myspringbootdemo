@@ -1,7 +1,6 @@
 package com.zlx.crud.controller;
 
-import com.zlx.crud.entity.Life;
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.User;
 import com.zlx.crud.service.PermissionService;
 import com.zlx.crud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

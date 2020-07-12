@@ -1,6 +1,6 @@
 package com.zlx.crud.controller;
 
-import com.zlx.crud.entity.Role;
+import com.zlx.crud.entity.mysql.Role;
 import com.zlx.crud.service.RoleService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

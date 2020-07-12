@@ -1,6 +1,6 @@
 package com.zlx.crud.dao;
 
-import com.zlx.crud.entity.Role;
+import com.zlx.crud.entity.mysql.Role;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

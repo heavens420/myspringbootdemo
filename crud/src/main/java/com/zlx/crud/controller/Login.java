@@ -1,6 +1,6 @@
 package com.zlx.crud.controller;
 
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 public class Login {
 
-    @RequestMapping("/login")
+    @RequestMapping("/")
     public String login(User user, HttpServletRequest request){
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(user.getName(), user.getPasswd());

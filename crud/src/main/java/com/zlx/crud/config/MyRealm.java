@@ -1,8 +1,6 @@
 package com.zlx.crud.config;
 
-import com.zlx.crud.entity.Permission;
-import com.zlx.crud.entity.Role;
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.User;
 import com.zlx.crud.service.PermissionService;
 import com.zlx.crud.service.RoleService;
 import com.zlx.crud.service.UserService;

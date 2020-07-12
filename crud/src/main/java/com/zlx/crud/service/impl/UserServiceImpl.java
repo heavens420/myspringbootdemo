@@ -3,8 +3,8 @@ package com.zlx.crud.service.impl;
 
 import com.zlx.crud.dao.UserDao;
 import com.zlx.crud.dao.UserRoleDao;
-import com.zlx.crud.entity.Life;
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.Life;
+import com.zlx.crud.entity.mysql.User;
 import com.zlx.crud.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

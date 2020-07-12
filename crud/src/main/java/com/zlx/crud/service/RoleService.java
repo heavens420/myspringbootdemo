@@ -1,7 +1,7 @@
 package com.zlx.crud.service;
 
 
-import com.zlx.crud.entity.Role;
+import com.zlx.crud.entity.mysql.Role;
 
 import java.util.List;
 import java.util.Set;

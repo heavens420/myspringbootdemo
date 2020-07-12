@@ -1,8 +1,8 @@
 package com.zlx.crud.service;
 
 
-import com.zlx.crud.entity.Life;
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.Life;
+import com.zlx.crud.entity.mysql.User;
 
 import java.util.Date;
 import java.util.List;

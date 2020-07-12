@@ -1,8 +1,8 @@
 package com.zlx.crud.controller;
 
 
-import com.zlx.crud.entity.Role;
-import com.zlx.crud.entity.User;
+import com.zlx.crud.entity.mysql.Role;
+import com.zlx.crud.entity.mysql.User;
 import com.zlx.crud.service.UserRoleService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

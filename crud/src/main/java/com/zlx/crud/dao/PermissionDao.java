@@ -1,6 +1,5 @@
 package com.zlx.crud.dao;
 
-import com.zlx.crud.entity.Permission;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Set;

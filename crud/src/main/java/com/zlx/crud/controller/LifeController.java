@@ -1,6 +1,6 @@
 package com.zlx.crud.controller;
 
-import com.zlx.crud.entity.Life;
+import com.zlx.crud.entity.mysql.Life;
 import com.zlx.crud.service.LifeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

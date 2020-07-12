@@ -2,7 +2,7 @@ package com.zlx.crud.service.impl;
 
 
 import com.zlx.crud.dao.RoleDao;
-import com.zlx.crud.entity.Role;
+import com.zlx.crud.entity.mysql.Role;
 import com.zlx.crud.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

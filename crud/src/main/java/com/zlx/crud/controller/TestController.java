@@ -1,8 +1,7 @@
 package com.zlx.crud.controller;
 
 //test
-import com.zlx.crud.entity.User;
-import lombok.var;
+import com.zlx.crud.entity.mysql.User;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.web.bind.annotation.*;

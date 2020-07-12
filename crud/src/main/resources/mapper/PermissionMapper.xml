@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zlx.crud.dao.PermissionDao">
-    <resultMap id="permissionMap" type="com.zlx.crud.entity.Permission">
+    <resultMap id="permissionMap" type="com.zlx.crud.entity.mysql.Permission">
         <result property="id" column="ID" jdbcType="INTEGER"></result>
         <result property="permissionCode" column="PER_CODE" jdbcType="VARCHAR"></result>
         <result property="permissionName" column="PER_NAME" jdbcType="VARCHAR"></result>

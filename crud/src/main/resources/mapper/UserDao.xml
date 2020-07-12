@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zlx.crud.dao.UserDao">
 
-    <resultMap type="com.zlx.crud.entity.User" id="UserMap">
+    <resultMap type="com.zlx.crud.entity.mysql.User" id="UserMap">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -13,7 +13,7 @@
     </resultMap>
 
 <!--    关联life表的quality字段-->
-    <resultMap type="com.zlx.crud.entity.User" id="UserMap2">
+    <resultMap type="com.zlx.crud.entity.mysql.User" id="UserMap2">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -25,7 +25,7 @@
     </resultMap>
 
 <!--    一对一关联life表-->
-    <resultMap type="com.zlx.crud.entity.User" id="UserMap3">
+    <resultMap type="com.zlx.crud.entity.mysql.User" id="UserMap3">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -33,7 +33,7 @@
         <result property="addr" column="addr" jdbcType="VARCHAR"/>
         <result property="passwd" column="password" jdbcType="VARCHAR"/>
         <result property="time" column="time" jdbcType="TIMESTAMP" />
-        <association property="life" javaType="com.zlx.crud.entity.Life">
+        <association property="life" javaType="com.zlx.crud.entity.mysql.Life">
             <id property="id" column="id" jdbcType="VARCHAR" />
             <result property="rest" column="rest" jdbcType="DOUBLE" />
             <result property="used" column="used" jdbcType="DOUBLE" />
@@ -43,7 +43,7 @@
     </resultMap>
 
 <!--    将life属性 查询后变为 user属性-->
-    <resultMap type="com.zlx.crud.entity.User" id="UserMap4">
+    <resultMap type="com.zlx.crud.entity.mysql.User" id="UserMap4">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -55,7 +55,7 @@
     </resultMap>
 
 <!--    一对多查询-->
-    <resultMap type="com.zlx.crud.entity.User" id="UserMap5">
+    <resultMap type="com.zlx.crud.entity.mysql.User" id="UserMap5">
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="age" column="age" jdbcType="INTEGER"/>
         <result property="name" column="name" jdbcType="VARCHAR"/>
@@ -63,14 +63,14 @@
         <result property="addr" column="addr" jdbcType="VARCHAR"/>
         <result property="passwd" column="password" jdbcType="VARCHAR"/>
         <result property="time" column="time" jdbcType="TIMESTAMP" />
-        <collection property="roles" ofType="com.zlx.crud.entity.Role">
+        <collection property="roles" ofType="com.zlx.crud.entity.mysql.Role">
             <id property="id" column="ID" jdbcType="INTEGER"/>
             <result property="name" column="NAME" jdbcType="VARCHAR"/>
         </collection>
     </resultMap>
 
 <!--    查询life表-->
-    <select id="getLife" resultType="com.zlx.crud.entity.Life">
+    <select id="getLife" resultType="com.zlx.crud.entity.mysql.Life">
         select * from life
     </select>
 
@@ -178,7 +178,7 @@
     </select>
 
 <!--    根据用户名或电话查询用户-->
-    <select id="queryUserbyNameOrPhone" resultType="com.zlx.crud.entity.User" resultMap="UserMap">
+    <select id="queryUserbyNameOrPhone" resultType="com.zlx.crud.entity.mysql.User" resultMap="UserMap">
         select * from USER u where u.name = #{userId} or u.phone = #{userId}
     </select>
 
