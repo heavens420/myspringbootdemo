@@ -42,6 +42,12 @@
         </dependency>
 
         <dependency>
+            <groupId>io.github.jianzhichun</groupId>
+            <artifactId>spring-boot-starter-swagger2</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.22</version>
@@ -69,6 +75,12 @@
             <artifactId>shiro-core</artifactId>
             <version>1.4.2</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>cn.org.faster</groupId>-->
+<!--            <artifactId>spring-boot-starter-shiro</artifactId>-->
+<!--            <version>1.3.8.RELEASE</version>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,6 +110,27 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
+<!--                配置打包参数 只打包自己写的代码 不打包依赖以减小打包的体积-->
+<!--                因为没有将依赖打包,所以需要指定依赖文件才能正常运行打包后的jar文件-->
+<!--                java -jar crud.jar -Dloader.path=依赖文件所在文件夹,依赖文件夹可通过正常打包获得,
+                    日后在依赖不需要修改的情况下,只需打包自己的代码不需要打包依赖文件,可以大大减少打包后的jar包体积-->
+<!--                <configuration>-->
+<!--                    <mainClass>com.zlx.crud.CrudApplication</mainClass>-->
+<!--                    <layout>ZIP</layout>-->
+<!--                    <includes>-->
+<!--                        要打包的模块，可以是多个include-->
+<!--                        <include>-->
+<!--                            <groupId>com.zlx</groupId>-->
+<!--                            <artifactId>crud</artifactId>-->
+<!--                        </include>-->
+<!--                    </includes>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>repackage</goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
             </plugin>
 
             <!--配置docker插件-->

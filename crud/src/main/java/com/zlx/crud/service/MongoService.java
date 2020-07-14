@@ -36,7 +36,7 @@ public interface MongoService {
 
     /**
      * 条件查询用户
-     * @param id
+     * @param userId
      * @return
      */
     User findUser(Integer userId);
@@ -46,4 +46,19 @@ public interface MongoService {
      * @return
      */
     List<User> findAllUser();
+
+    /**
+     * 正则匹配查询
+     * @param name
+     * @return
+     */
+    List<User> getUserByRegex(String name);
+
+    /**
+     * 根据年龄范围和性别查询
+     * @param age
+     * @param sex
+     * @return
+     */
+    List<User> getUsers(int age,String sex);
 }
