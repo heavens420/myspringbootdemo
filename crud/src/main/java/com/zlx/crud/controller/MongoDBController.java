@@ -4,7 +4,6 @@ import com.zlx.crud.entity.mongodb.User;
 import com.zlx.crud.service.MongoService;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

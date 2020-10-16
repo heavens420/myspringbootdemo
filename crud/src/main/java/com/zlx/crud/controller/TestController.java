@@ -1,11 +1,16 @@
 package com.zlx.crud.controller;
 
 //test
+import com.zlx.crud.annotation.Permission;
+import com.zlx.crud.dao.TestDao;
 import com.zlx.crud.entity.mysql.User;
+import com.zlx.crud.service.TestService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +20,8 @@ import java.util.Map;
 @RestController
 public class TestController {
 
+    @Resource
+    private TestService testService;
 
     @GetMapping("/1")
     public Map<String,Object> GetUser(String a,int b){
@@ -30,6 +37,8 @@ public class TestController {
         return map;
     }
 
+    // 添加自定义权限注解，只有添加了此注解的方法可以正常执行
+    @Permission
     @PostMapping("2")
     public List<User> getAll(@RequestBody User user){
         List list = new ArrayList();
@@ -66,5 +75,10 @@ public class TestController {
     @RequestMapping("/6")
     public String loginFail(int code){
         return code==1?"未登录":"未授权";
+    }
+
+    @RequestMapping("/name")
+    public String getTest(String name){
+        return testService.getTest(name);
     }
 }
