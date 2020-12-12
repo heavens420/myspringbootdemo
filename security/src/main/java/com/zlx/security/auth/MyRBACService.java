@@ -30,7 +30,7 @@ public class MyRBACService {
             //获取登录用户的用户名
             String username = ((UserDetails) principal).getUsername();
             List<String> urls = mapper.findUrlByUserName(username);
-            System.out.println("succes");
+            System.out.println("success");
 
             //数据库中每条记录只能是单个权限 不能是多个权限(url)用逗号隔开 否则该记录的多条权限会被当作是一条权限与请求路径比较，必然匹配失败
             return urls.stream().anyMatch(
