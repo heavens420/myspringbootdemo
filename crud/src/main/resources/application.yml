@@ -1,19 +1,21 @@
 
 server:
   port: 8103
+#  address: fe80::4969:38ee:59e6:69ef
 mybatis:
   mapper-locations: classpath:mapper/*.xml
 #  type-aliases-package: com.example.demo.entity
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#spring:
-#  datasource:
-#    username: root
-#    password: root
+spring:
+  datasource:
+    username: root
+    password: ROOT
 #    url: jdbc:mysql://jing.tk:3312/zlx?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    type: com.alibaba.druid.pool.DruidDataSource
-#
+    url: jdbc:mysql://192.168.223.202:3301/zlx?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
 #  data:
 #    mongodb:
 #      host: jing.tk
@@ -28,8 +30,15 @@ mybatis:
 #    time-zone: GMT+8
 
 #控制台打印sql语句
-logging:
-  level:
-    #dao层包名
-    com.zlx.crud.dao: debug
-    org.springframework.data.mongodb.core: DEBUG
+#logging:
+#  level:
+#    #dao层包名
+#    com.zlx.crud.dao: debug
+#    org.springframework.data.mongodb.core: DEBUG
+
+myvalue:
+  key: zheshiyigeceshi
+  value: metoo  niadf  whwhw
+
+anothervalue:
+  value: hahaha

@@ -8,10 +8,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="crud" />
-        <module name="security" />
         <module name="myspringbootdemo" />
-        <module name="jjwt" />
+        <module name="security" />
         <module name="datajpa" />
+        <module name="jjwt" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
