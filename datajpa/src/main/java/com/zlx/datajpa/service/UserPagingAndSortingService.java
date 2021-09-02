@@ -28,7 +28,11 @@ public class UserPagingAndSortingService {
     //size 每页数量
 
     public Iterable<User> FindAllByPageAndSort(int page,int size){
+
+        Sort sort = Sort.by(Sort.Direction.DESC,"id");
+        PageRequest pageRequest = PageRequest.of(page, size, sort);
         //设置按id降序排列
-        return repository.findAll(PageRequest.of(page, size, Sort.Direction.DESC,"id"));
+//        return repository.findAll(PageRequest.of(page, size, Sort.Direction.DESC,"id"));
+        return repository.findAll(pageRequest);
     }
 }

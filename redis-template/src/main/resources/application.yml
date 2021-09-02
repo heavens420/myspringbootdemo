@@ -1,0 +1,40 @@
+server:
+  port: 10002
+
+spring:
+  cache:
+    type: redis
+  redis:
+    # host
+    host: jing.tk
+    # port
+    port: 50007
+    # database
+    database: 15
+      # password
+      #    password: ""
+      #    jedis:
+      pool:
+        # 连接池最大连接数，负数表示无限制
+        max-active: 8
+        # 连接池最大阻塞时间，负数表示无限制
+        max-wait: -1ms
+        # 连接池最大空闲连接
+        max-idle: 8
+        # 连接池最小空闲连接
+        min-idle: 0
+    #     连接超时时间
+    connect-timeout: 5000ms
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://jing.tk:50012/datajpa-redis?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    username: root
+    password: ROOT#
+
+

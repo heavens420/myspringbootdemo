@@ -6,11 +6,14 @@ import com.zlx.datajpa.service.UserPagingAndSortingService;
 import com.zlx.datajpa.service.UserCrudRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
@@ -90,11 +93,37 @@ public class UserController {
     }
 
     @RequestMapping("/8")
-    public Page<User> FindAll(int page, int size, @RequestBody User user){
+    public List<User> FindAll(int page, int size, @RequestBody User user){
         System.out.println(user);
-        return jpaRepositoryService.FindAllByPagingAndSorting(page, size, user);
+         return jpaRepositoryService.findAllByPagingAndSorting(page, size, user).get().collect(Collectors.toList());
     }
 
+    @GetMapping("/user")
+    public Map<String, Object> findUsersByLikeName(int page,int size,String name){
+        Pageable pageable = PageRequest.of(page - 1, size);
+        Map<String, Object> map = new HashMap<>(8);
+        final Page<User> user = jpaRepositoryService.findUserByNameLike(pageable, name);
+        map.put("user", user.getContent());
+        return map;
+    }
+
+    @GetMapping("/sub")
+    public Map<String, Object> findUserBySubQuery(int page,int size,String name,String address){
+        Pageable pageable = PageRequest.of(page, size);
+        Map<String, Object> map = new HashMap(8);
+        final Page<User> subQuery = jpaRepositoryService.findUserBySubQuery(pageable, name, address);
+        map.put("user",subQuery);
+        return map;
+    }
+
+    @GetMapping("/ur")
+    public Map<String, Object> findUserByJoin(int page,int size,int userId){
+        Pageable pageable = PageRequest.of(page, size);
+        Map<String, Object> map = new HashMap<>(8);
+        final Page<User> userJoinRole = jpaRepositoryService.findUserJoinRole(pageable, userId);
+        map.put("user-role", userJoinRole);
+        return map;
+    }
     @RequestMapping("/9")
     public Map<String,Object> FindUserByName(String name){
         User user = jpaRepositoryService.findUserByName(name);
@@ -113,7 +142,7 @@ public class UserController {
 
     @RequestMapping("/11")
     public Map<String,Object> FindNameLike(String name,int id){
-        List<User> users = jpaRepositoryService.FindNameLike(name,id);
+        List<User> users = jpaRepositoryService.findNameLike(name,id);
         Map<String,Object> map = new HashMap();
         map.put("user",users);
         return map;
@@ -121,7 +150,7 @@ public class UserController {
 
     @RequestMapping("/12")
     public Map<String,Object> FindAddrLike(String addr,int id){
-        List<User> users = jpaRepositoryService.FindAddrLike(addr,id);
+        List<User> users = jpaRepositoryService.findAddrLike(addr,id);
         Map<String,Object> map = new HashMap();
         map.put("user",users);
         return map;
@@ -129,7 +158,7 @@ public class UserController {
 
     @RequestMapping("/13")
     public Map<String,Object> FindAddrIS(String addr){
-        List<User> users = jpaRepositoryService.FindAddrIS(addr);
+        List<User> users = jpaRepositoryService.findAddrIS(addr);
         Map<String,Object> map = new HashMap();
         map.put("user",users);
         return map;
@@ -137,7 +166,7 @@ public class UserController {
 
     @RequestMapping("/14")
     public Map<String,Object> UpdateUserByid(String addr,String name,int id){
-        jpaRepositoryService.UpdateUserById(addr,name,id);
+        jpaRepositoryService.updateUserById(addr,name,id);
         Map<String,Object> map = new HashMap();
         map.put("result","修改成功");
         return map;

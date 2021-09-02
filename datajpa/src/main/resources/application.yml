@@ -8,6 +8,6 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://jing.tk:3311/datajpa?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://jing.tk:50012/datajpa?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
-    password: root
+    password: ROOT#

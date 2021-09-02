@@ -11,7 +11,6 @@ import javax.persistence.Id;
 
 @Entity(name = "t_user")
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class User {
     @Id
@@ -28,4 +27,9 @@ public class User {
         this.phone = phone;
         this.passwd = passwd;
     }
+
+    public User() {
+
+    }
+
 }

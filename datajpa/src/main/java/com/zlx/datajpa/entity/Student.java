@@ -37,7 +37,7 @@ public class Student {
         this.studentName = studentName;
     }
 
-    //controller 方法上 也加上此注解 则该方法查询可显示密码 不加此注解的方法不会再出现密码字段
+    //tk.zlx.interceptorannotation.controller 方法上 也加上此注解 则该方法查询可显示密码 不加此注解的方法不会再出现密码字段
     @JsonView(UserDetailView.class)
     public String getStudentPasswd() {
         return studentPasswd;

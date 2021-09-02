@@ -26,7 +26,7 @@ public class First {
 
     @RequestMapping("/sysuser")
     public String Three(){
-//        return service.preAu();
+//        return tk.zlx.interceptorannotation.service.preAu();
         return "sysuser authorthy";
     }
 

@@ -1,0 +1,9 @@
+server:
+  port: 9090
+
+
+#配置是 rocketmq.xxx  不是 spring.rocketmq.xxx
+rocketmq:
+  name-server: 192.168.123.205:9876
+  producer:
+    group: springboot-rmq

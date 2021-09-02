@@ -1,13 +1,15 @@
 package com.zlx.datajpa.entity;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "t_person")
-@Data
+@Getter
 @NoArgsConstructor
 public class Person {
     @Id
@@ -16,8 +18,9 @@ public class Person {
     private String psersonName;
 
     //遵照jpa 规范 一对多 外键由多端维护 多端实现增删改查
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "role_id" ,referencedColumnName = "id")
+    @JsonBackReference  // 解决 返回结果嵌套循环
     private Role role;
 
 }

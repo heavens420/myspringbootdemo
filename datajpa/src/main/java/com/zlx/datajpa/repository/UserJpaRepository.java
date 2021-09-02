@@ -32,19 +32,19 @@ public interface UserJpaRepository extends JpaRepository<User,Integer>, JpaSpeci
     List<User> findUsersByNameIsLike(String name);
 
     @Query("from t_user where name like %?1% and id > ?2")
-    List<User> FindNameLike(String name,int id);
+    List<User> findNameLike(String name, int id);
 
     //使用原生sql
     @Query(value = "select * from t_user where addr like %?1% and id < ?2" ,nativeQuery = true)
-    List<User> FindAddrLike(String addr,int id);
+    List<User> findAddrLike(String addr, int id);
 
     //使用@Param注解   冒号后面的内容与 注解中的内容必须一致
     @Query(value = "select * from t_user where addr = :addr",nativeQuery = true)
-    List<User> FindAddrIs(@Param("addr") String addr);
+    List<User> findAddrIs(@Param("addr") String addr);
 
     //必须加事务才行
     @Modifying
     @Transactional
     @Query("update t_user set addr = ?1 ,name = ?2 where id = ?3")
-    void UpdateUserById(String addr,String name,int id);
+    void updateUserById(String addr, String name, int id);
 }

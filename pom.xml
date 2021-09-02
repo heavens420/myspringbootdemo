@@ -12,6 +12,7 @@
     <artifactId>myspringbootdemo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>myspringbootdemo</name>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -20,14 +21,15 @@
 
     <modules>
         <module>crud</module>
+        <module>aop-annotation</module>
+        <module>datajpa</module>
+        <module>importexceltest</module>
+        <module>jjwt</module>
+        <module>redis-template</module>
+        <module>security</module>
+        <module>springboot-rocketmq-consumer</module>
+        <module>springboot-rocketmq-producer</module>
     </modules>
-
-
-
-
-
-
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

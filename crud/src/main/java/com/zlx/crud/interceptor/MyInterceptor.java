@@ -1,7 +1,6 @@
 package com.zlx.crud.interceptor;
 
 import com.zlx.crud.annotation.Permission;
-import javafx.util.Pair;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;

@@ -1,0 +1,17 @@
+server:
+  port: 10003
+
+spring:
+  kafka:
+    bootstrap-servers: jing.tk:xxxx
+    consumer:
+      group-id: test-group
+      enable-auto-commit: false
+      # earliest 从头开始消费， latest 从最新的开始消费
+      auto-offset-reset: latest
+    listener:
+      concurrency: 6 # 消费并发能力
+      ack-mode: manual # 设置手动提交的时候 需要设置ackMode
+    template:
+      default-topic: test
+

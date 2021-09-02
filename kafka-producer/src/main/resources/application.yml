@@ -1,0 +1,9 @@
+server:
+  port: 10002
+spring:
+  kafka:
+    bootstrap-servers: jing.tk:xxxx
+    producer:
+      retries: 1  # 重试次数 默认Integer.MAX_VALUE
+      batch-size: 16666 # 同一批次内存大小 默认16k
+      buffer-memory: 3333333 # 生产者内存缓冲区大小

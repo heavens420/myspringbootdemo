@@ -1,13 +1,16 @@
 package com.zlx.datajpa.entity;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity(name = "t_role")
-@Data
+@Getter
 @NoArgsConstructor
 public class Role {
     @Id
@@ -15,6 +18,7 @@ public class Role {
     private Integer id;
     private String roleName;
 
-    @OneToMany(mappedBy = "role",cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    private List<Person> personList;
+    @OneToMany(fetch=FetchType.LAZY,mappedBy = "role",cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+    private Set<Person> personList;
+
 }
