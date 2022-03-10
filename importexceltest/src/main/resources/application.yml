@@ -1,0 +1,8 @@
+server:
+  port: 10010
+spring:
+  datasource:
+    url: jdbc:mariadb://jing.tk:3360/springcloud?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: ROOT#

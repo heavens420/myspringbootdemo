@@ -1,0 +1,16 @@
+server:
+  port: 9999
+
+# 配置数据源
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://jing.tk:3313/data_back?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: ROOT#
+
+# 配置日志
+logging:
+  level:
+    root: warn
+    tk.jing.mp.mapper: trace
