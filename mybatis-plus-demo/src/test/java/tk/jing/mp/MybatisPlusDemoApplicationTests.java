@@ -24,11 +24,13 @@ class MybatisPlusDemoApplicationTests {
 
     @Test
     public void insertUser() {
-        User user = new User();
-        user.setUserName("mp2222");
-        user.setAddress("beijign2222222222222 ");
-        user.setAge(120);
-        mapper.insert(user);
+        for (int i = 0; i < 3; i++) {
+            User user = new User();
+            user.setUserName("assin"+i);
+            user.setAddress("hahah ");
+            user.setAge(i*10);
+            mapper.insert(user);
+        }
     }
 
     @Test
@@ -46,7 +48,7 @@ class MybatisPlusDemoApplicationTests {
     public void updateUserById() {
         User user = new User();
         user.setId(4L);
-        user.setUserName("update");
+        user.setUserName("update222222");
         user.setAge(200);
         mapper.updateById(user);
     }
