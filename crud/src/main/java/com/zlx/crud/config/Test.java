@@ -12,8 +12,8 @@ public class Test {
         list.add(new User(12,"ni",10,"hhhh","22"));
         list.add(new User(12,"hao",10,"hhhh","33"));
 
-        list.forEach(user -> user.setPasswd(MD5.md5(user.getUserId()+"",user.getPasswd())));
+//        list.forEach(user -> user.setPasswd(MD5.md5(user.getUserId()+"",user.getPasswd())));
 
-        list.forEach(user -> System.out.println(user.getPasswd()));
+//        list.forEach(user -> System.out.println(user.getPasswd()));
     }
 }
