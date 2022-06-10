@@ -3,7 +3,9 @@ server:
 
 spring:
   kafka:
-    bootstrap-servers: jing.tk:xxxx
+    bootstrap-servers: 192.168.59.222:9092
+#    bootstrap-servers: 192.168.123.205:9092
+#    bootstrap-servers: jing.tk:50017
     consumer:
       group-id: test-group
       enable-auto-commit: false

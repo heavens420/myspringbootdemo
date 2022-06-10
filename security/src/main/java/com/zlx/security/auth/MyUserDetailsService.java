@@ -2,12 +2,15 @@ package com.zlx.security.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import javax.sql.DataSource;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,10 +20,24 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private MyUserDetailsMapper mapper;
 
+    @Autowired
+    private DataSource dataSource;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        // 通过自带的jdbc创建用户 每次都会执行所以要判断是否存在
+        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+        jdbcUserDetailsManager.setDataSource(dataSource);
+        if (!jdbcUserDetailsManager.userExists("admin")) {
+            jdbcUserDetailsManager.createUser(User.withUsername("admin").password("admin").roles("admin").build());
+        }
+
         //加载用户基础信息
         MyUserDetails user = mapper.findByUserName(s);
+
+        if (user == null) {
+            throw new RuntimeException("用户不存在");
+        }
 
         //加在用户角色信息
         List<String> roles = mapper.findRoleByUserName(s);

@@ -1,0 +1,6 @@
+spring:
+  elasticsearch:
+    rest:
+      uris: http://jing.tk:50010
+server:
+  port: 9095

@@ -1,6 +1,7 @@
 package com.zlx.datajpa.repository;
 
 import com.zlx.datajpa.entity.User;
+import org.springframework.data.domain.Example;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 

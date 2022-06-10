@@ -4,6 +4,7 @@ import com.zlx.datajpa.entity.User;
 import com.zlx.datajpa.service.UserJpaRepositoryService;
 import com.zlx.datajpa.service.UserPagingAndSortingService;
 import com.zlx.datajpa.service.UserCrudRepositoryService;
+import com.zlx.datajpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +27,10 @@ public class UserController {
 
     @Autowired
     private UserJpaRepositoryService jpaRepositoryService;
+
+    @Autowired
+    private UserService userService;
+
 
     @RequestMapping("/1")
     public Map<String,Object> add(User user){
@@ -169,6 +174,19 @@ public class UserController {
         jpaRepositoryService.updateUserById(addr,name,id);
         Map<String,Object> map = new HashMap();
         map.put("result","修改成功");
+        return map;
+    }
+
+    @GetMapping("/matcher")
+    public Map<String, Object> getAllUser(){
+        User user = new User();
+        user.setId(1);
+//        user.setAddr("北京");
+        user.setPasswd("333333");
+        user.setName("zs");
+        final List<User> all = userService.getAll(user);
+        Map<String, Object> map = new HashMap(4);
+        map.put("result", all);
         return map;
     }
 }

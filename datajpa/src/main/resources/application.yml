@@ -4,10 +4,16 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://jing.tk:50012/datajpa?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://jing.tk:3312/datajpa?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=false&allowMultiQueries=true
     username: root
     password: ROOT#
+
+#  spring.jpa.database=mysql
+#  spring.jpa.database-platform=mysql
+#  spring.jpa.hibernate.ddl-auto=update
+#  spring.jpa.show-sql=true
+#  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect

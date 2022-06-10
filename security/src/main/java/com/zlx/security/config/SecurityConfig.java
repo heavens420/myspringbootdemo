@@ -1,10 +1,7 @@
 package com.zlx.security.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zlx.security.auth.MyExpiredSessionStrategy;
-import com.zlx.security.auth.MyInvalidSessionStrategy;
-import com.zlx.security.auth.MySuccessHandler;
-import com.zlx.security.auth.MyUserDetailsService;
+import com.zlx.security.auth.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,7 +31,7 @@ import java.io.PrintWriter;
 
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true) //开启全局方法 级别安全注解
-public class passconfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private MySuccessHandler mySuccessHandler;
@@ -50,6 +47,9 @@ public class passconfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private MyAccessDeniedHandler myAccessDeniedHandler;
 
     @Bean
     PasswordEncoder encoder() {
@@ -71,8 +71,12 @@ public class passconfig extends WebSecurityConfigurerAdapter {
     public PersistentTokenRepository persistentTokenRepository() {
         JdbcTokenRepositoryImpl tokenRepository = new JdbcTokenRepositoryImpl();
         tokenRepository.setDataSource(dataSource);
+        // 第一次启动自动建表 第二次需要注释
+//        tokenRepository.setCreateTableOnStartup(true);
         return tokenRepository;
     }
+
+
 
     //重写configure 方法 配置用户名密码角色
     @Override
@@ -97,6 +101,7 @@ public class passconfig extends WebSecurityConfigurerAdapter {
                 .rememberMe()
                 .rememberMeParameter("rememberme") //设置rememberme的名称默认为 remember-me
                 .rememberMeCookieName("rememberMeCookie") //设置rememberme的cookie名称默认为
+                .key("zlx") // rememberMe中的key值 服务重启自动修改 自定义可防止服务重启修改
                 .tokenValiditySeconds(60 * 60) //rememberme cookie 过期时间
                 .tokenRepository(persistentTokenRepository()) //将token信息存入数据库
                 .and()
@@ -152,6 +157,7 @@ public class passconfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .exceptionHandling()
+                .accessDeniedHandler(myAccessDeniedHandler) // 处理指定状态码返回内容
 //                .authenticationEntryPoint((httpServletRequest, httpServletResponse, e) -> {
 //                    //配置未登录时请求页面 返回提示信息(默认跳转到登录页面)
 //                    httpServletResponse.setContentType("application/json;charset=utf-8");
@@ -171,6 +177,7 @@ public class passconfig extends WebSecurityConfigurerAdapter {
 //                .antMatchers("/admin/**").hasRole("admin")
 //                .antMatchers("/user/**").hasRole("user")
 //                .antMatchers("/**").hasAnyAuthority("ROLE_admin")  也可以这样设置访问权限
+//                .antMatchers("/**").hasIpAddress("127.0.0.1") // 只能通过特定ip地址访问
                 //动态加载数据库中的权限并校验 rbac为校验接口的名称
                 .anyRequest().access("@rbac.hasPermission(request,authentication)")
                 .and()
@@ -193,7 +200,8 @@ public class passconfig extends WebSecurityConfigurerAdapter {
                 //设置为true时 登录数量超限无法登录 false时 超出最大登录数量限制则踢掉已登录用户
                 .maxSessionsPreventsLogin(false)
                 //session数量超限后系统进行的提示
-                .expiredSessionStrategy(new MyExpiredSessionStrategy());
+                .expiredSessionStrategy(new MyExpiredSessionStrategy())
+
         ;
     }
 

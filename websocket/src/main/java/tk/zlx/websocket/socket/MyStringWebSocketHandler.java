@@ -1,12 +1,24 @@
 package tk.zlx.websocket.socket;
 
 import org.springframework.stereotype.Component;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.socket.*;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
 @Component
 public class MyStringWebSocketHandler extends TextWebSocketHandler {
 
+    public static void main(String[] args) {
+        MultiValueMap<String, String> map = new LinkedMultiValueMap();
+        map.add("12","fsa");
+        map.add("12","a");
+        map.add("12","fh");
+        map.set("88","jl");
+        map.set("88","fa");
+        map.set("88","rtgd");
+        System.out.println(map.toString());
+    }
     /**
      * 和客户端建立连接成功后触发
      * @param session

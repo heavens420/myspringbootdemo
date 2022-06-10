@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ConsumerController {
 
-    @KafkaListener(topics = {"test"})
+    @KafkaListener(topics = {"test-topic","test-topic1","flink","event_topic"})
     public void receiveMessage(ConsumerRecord<String,String> message, Acknowledgment ack){
         try {
             String value = message.value();
