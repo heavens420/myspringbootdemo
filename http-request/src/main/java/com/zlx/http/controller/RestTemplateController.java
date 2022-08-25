@@ -117,4 +117,22 @@ public class RestTemplateController {
         log.info("headers:{}",response.getHeaders().toString());
         return response.toString();
     }
+
+    /**
+     * postEntity 请求
+     * @return
+     */
+    public String sendPost(){
+        String url = "http://localhost:8080/";
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        MultiValueMap<String, Object> formData = new LinkedMultiValueMap<>();
+        formData.set("jobGroup", "5");
+        HttpEntity<MultiValueMap<String, Object>> httpEntity = new HttpEntity<>(formData, httpHeaders);
+
+        ResponseEntity<Object> response = restTemplate.postForEntity(url, httpEntity, Object.class);
+        log.info("response:{}",response.toString());
+
+        return response.getBody().toString();
+    }
 }
