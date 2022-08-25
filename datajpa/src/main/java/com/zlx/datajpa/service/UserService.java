@@ -43,7 +43,9 @@ public class UserService {
                 // id = xxx
                 .withMatcher("id",ExampleMatcher.GenericPropertyMatchers.exact())
                 // 忽略passwd字段，不作为查询条件
-                .withIgnorePaths("passwd");
+                .withIgnorePaths("passwd")
+                // 忽略空字段
+                .withIgnoreNullValues();
 
         final Example<User> options = Example.of(user,matcher);
         List<User> list = userReopsitory.findAll(options);

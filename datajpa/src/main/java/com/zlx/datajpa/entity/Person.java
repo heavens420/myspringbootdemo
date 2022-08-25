@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity(name = "t_person")
 @Getter
+@Setter
 @NoArgsConstructor
 public class Person {
     @Id
@@ -18,9 +18,9 @@ public class Person {
     private String psersonName;
 
     //遵照jpa 规范 一对多 外键由多端维护 多端实现增删改查
-    @ManyToOne
-    @JoinColumn(name = "role_id" ,referencedColumnName = "id")
-    @JsonBackReference  // 解决 返回结果嵌套循环
-    private Role role;
+//    @ManyToOne
+//    @JoinColumn(name = "id" ,referencedColumnName = "id",insertable = false,updatable = false)
+//    @JsonBackReference  // 解决 返回结果嵌套循环
+//    private Role role;
 
 }

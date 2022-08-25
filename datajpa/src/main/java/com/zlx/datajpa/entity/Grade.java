@@ -14,6 +14,8 @@ public class Grade {
     private Integer id;
     private String gradeName;
 
+    private int userId;
+
 //    @OneToOne(mappedBy = "grade")//外键由Student中的grade维护
 //    private Student student;
 

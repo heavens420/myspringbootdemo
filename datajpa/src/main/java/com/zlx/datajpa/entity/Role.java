@@ -1,24 +1,24 @@
 package com.zlx.datajpa.entity;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity(name = "t_role")
 @Getter
 @NoArgsConstructor
-public class Role {
+public class Role implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String roleName;
+    private int userId;
 
-    @OneToMany(fetch=FetchType.LAZY,mappedBy = "role",cascade = {CascadeType.MERGE,CascadeType.REFRESH})
-    private Set<Person> personList;
+//    @OneToMany(fetch=FetchType.LAZY,cascade = {CascadeType.MERGE,CascadeType.REFRESH})
+//    @JoinColumn(name = "id", referencedColumnName = "id")
+//    private Set<Person> personList;
 
 }

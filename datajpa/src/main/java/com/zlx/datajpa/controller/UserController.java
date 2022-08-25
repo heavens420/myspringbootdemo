@@ -121,6 +121,24 @@ public class UserController {
         return map;
     }
 
+    @GetMapping("/sub2")
+    public Map<String, Object> findUserBySubQuery2(int page,int size,String name){
+        Pageable pageable = PageRequest.of(page, size);
+        Map<String, Object> map = new HashMap(8);
+        final Page<User> subQuery = jpaRepositoryService.findUserBySubQuery2(pageable, name);
+        map.put("user",subQuery);
+        return map;
+    }
+
+    @GetMapping("/sub3")
+    public Map<String, Object> findUserBySubQuery3(int page,int size,String name){
+        Pageable pageable = PageRequest.of(page, size);
+        Map<String, Object> map = new HashMap(8);
+        final Page<User> subQuery = jpaRepositoryService.findUserBySubQuery3(pageable, name);
+        map.put("user",subQuery);
+        return map;
+    }
+
     @GetMapping("/ur")
     public Map<String, Object> findUserByJoin(int page,int size,int userId){
         Pageable pageable = PageRequest.of(page, size);
@@ -128,6 +146,13 @@ public class UserController {
         final Page<User> userJoinRole = jpaRepositoryService.findUserJoinRole(pageable, userId);
         map.put("user-role", userJoinRole);
         return map;
+    }
+
+    @GetMapping("/ur2")
+    public Page<User> findUserByJoin2(int page,int size){
+        Pageable pageable = PageRequest.of(page, size);
+        Map<String, Object> map = new HashMap<>(8);
+        return jpaRepositoryService.findByUserJoinGrade(pageable);
     }
     @RequestMapping("/9")
     public Map<String,Object> FindUserByName(String name){
